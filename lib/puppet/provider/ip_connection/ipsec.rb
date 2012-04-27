@@ -15,14 +15,14 @@
 #   limitations under the License.
 #
 
-# Puppet Provider for IPSec-Tools on SLES
+# Puppet Provider for IPSec-Tools on SLES and Debian
 #
 #
 Puppet::Type.type(:ip_connection).provide(:ipsec) do 
     desc "Provider for IPSec-Tools.  
       http://www.ipsec-howto.org/x304.html"
 
-    confine :operatingsystem => ["SLES"] # this provider may be valid for other operating systems too, but was not tested on others than SLES
+    confine :operatingsystem => ["SLES", "Debian"] # this provider may be valid for other operating systems too
 
     $setkeyconf = "/etc/racoon/setkey.conf"
     $setkeyconftmp = $setkeyconf + ".tmp"
