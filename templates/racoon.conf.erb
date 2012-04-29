@@ -12,7 +12,7 @@ path pre_shared_key "/etc/racoon/psk.txt";
 
 # racoon will look for certificate file in the directory,
 # if the certificate/certificate request payload is received.
-path certificate "/var/lib/puppet/ssl";
+path certificate "/etc/racoon/ssl";
 
 # "log" specifies logging level.  It is followed by either "notify", "debug"
 # or "debug2".
@@ -52,7 +52,7 @@ timer
 
 remote anonymous {
         exchange_mode main;
-        certificate_type x509 "certs/<%= fqdn %>.pem" "private_keys/<%= fqdn %>.pem";
+        certificate_type x509 "<%= fqdn %>.cert" "<%= fqdn %>.key";
         verify_cert on;
         my_identifier asn1dn;
         peers_identifier asn1dn;
